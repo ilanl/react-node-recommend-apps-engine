@@ -30,10 +30,10 @@ class App {
   
   private setUpRoutes() {
     
-    // Extract to controller
+    // TODO: Extract to controller
     this.app.route(this.APPS_RECOMMEND_ROUTE).post(async (req: Request, res: Response) => {
       let query = <IQueryFilter>req.body;
-      console.log('request', {...query }); // Add middleware to log request/response
+      console.log('request', {...query }); // TODO: Add middleware to log request/response
       let results: IAppInfo[] = await this.service.filter(query);
       res.json(results);
      });
