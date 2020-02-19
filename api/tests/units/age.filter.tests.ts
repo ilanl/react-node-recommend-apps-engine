@@ -1,17 +1,15 @@
 
 import { IAppInfo, IQueryFilter } from "../../src/recommendations/models";
-import { ageFilter } from '../../src/recommendations/filters';
+import { ageFilter } from '../../src/recommendations/filters/age';
 
-describe("Filter Service", () => {  
+describe("Age Filter", () => {  
   
   it("should return apps above minimum age when app is restricted", async (done) => {
     
     // Setup
-    const AGE = 18;
-    
     const apps: IAppInfo[] = [<IAppInfo>{ "id": 1,
         "name": "App Restricted",
-        "category": "Cat 1",
+        "category": "Category",
         "external_id": "com.trulia.android",
         "rating": 4.49,
         "install_count": 10000001,
@@ -23,7 +21,7 @@ describe("Filter Service", () => {
         <IAppInfo>{
         "id": 2,
         "name": "App Not Restricted",
-        "category": "Cat 2",
+        "category": "Category",
         "external_id": "com.trulia.android",
         "rating": 4.49,
         "install_count": 10000001,
@@ -34,8 +32,12 @@ describe("Filter Service", () => {
         }
       ]
     
+    // Test
+    const AGE = 18;
     let target = ageFilter;
     let results = apps.filter((i: IAppInfo) => target(<IQueryFilter>{ age: AGE }, i));
+    
+    // Assert
     expect(results.length).toEqual(2);
     done();
   });

@@ -1,5 +1,11 @@
 import { IAppInfo, IQueryFilter, FilterFunc } from './models';
-import { ageFilter, categoryFilter, ratingFilter } from './filters';
+
+// Filters
+import { ageFilter } from './filters/age';
+import { categoryFilter } from './filters/category';
+import { ratingFilter } from './filters/rating';
+
+// DDD - Db is on external layers
 import { IAppsAdapter } from '../data/adapter';
 
 const MAX_RECOMMENDED_APPS = 3;

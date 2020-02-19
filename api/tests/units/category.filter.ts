@@ -1,17 +1,15 @@
 
-import { Service } from "../../src/recommendations/service";
-import { IAppsAdapter } from "../../src/data/adapter";
 import { IAppInfo, IQueryFilter } from "../../src/recommendations/models";
+import { categoryFilter } from "../../src/recommendations/filters/category";
 
-describe("Filter Service", () => {  
-  it("should return all apps when there are no filters", async (done) => {
+describe("Category Filter", () => {
+  
+  it("should return apps that belong to a list of categories", async (done) => {
     
     // Setup
-    class StubAppsAdapter implements IAppsAdapter {
-      async getAllApps(): Promise<IAppInfo[]> {
-        return new Promise((resolve) => resolve([<IAppInfo>{ "id": 301,
-        "name": "Trulia Real Estate & Rentals",
-        "category": "House And Home",
+    const apps: IAppInfo[] = [<IAppInfo>{ "id": 1,
+        "name": "App 1",
+        "category": "Category 1",
         "external_id": "com.trulia.android",
         "rating": 4.49,
         "install_count": 10000001,
@@ -19,30 +17,11 @@ describe("Filter Service", () => {
         "url": "https://play.google.com/store/apps/details?id=com.trulia.android&hl=en-us",
         "publisher": "Trulia",
         "icon": "https://lh3.googleusercontent.com/3NbmSpzeGWDZswG-BOagaGVQVYl7_BcTfU16zFLzuGT6SJNzZuqnnGsO4up-HGdjLA=w0",
-        "min_age": 18 }]))
-      }
-    }
-
-    const query = <IQueryFilter>{}
-    
-    // Target
-    let target = new Service(new StubAppsAdapter());
-    target.filters = [];
-
-    let apps = await target.filter(query);
-    expect(apps.length).toEqual(1);
-    done();
-  });
-
-  it("should return no apps when no filter matches", async (done) => {
-    
-    // Setup
-    
-    class StubAppsAdapter implements IAppsAdapter {
-      async getAllApps(): Promise<IAppInfo[]> {
-        return new Promise((resolve) => resolve([<IAppInfo>{ "id": 301,
-        "name": "Trulia Real Estate & Rentals",
-        "category": "House And Home",
+        "min_age": 18}, 
+        <IAppInfo>{
+        "id": 2,
+        "name": "App 2",
+        "category": "Category 2",
         "external_id": "com.trulia.android",
         "rating": 4.49,
         "install_count": 10000001,
@@ -50,19 +29,18 @@ describe("Filter Service", () => {
         "url": "https://play.google.com/store/apps/details?id=com.trulia.android&hl=en-us",
         "publisher": "Trulia",
         "icon": "https://lh3.googleusercontent.com/3NbmSpzeGWDZswG-BOagaGVQVYl7_BcTfU16zFLzuGT6SJNzZuqnnGsO4up-HGdjLA=w0",
-        "min_age": 18 }]))
-      }
-    }
-
-    const query = <IQueryFilter>{}
+        "min_age": 18
+        }
+      ]
     
-    // Target
-    const target = new Service(new StubAppsAdapter());
-    const matchNone = (_c: IQueryFilter, _a: IAppInfo) => false;
-    target.filters = [matchNone];
+    // Test
+    const CATEGORIES = ["Category 1"];
+    let target = categoryFilter;
+    let results = apps.filter((i: IAppInfo) => target(<IQueryFilter>{ categories: CATEGORIES }, i));
     
-    let apps = await target.filter(query);
-    expect(apps.length).toEqual(0);
+    // Assert
+    expect(results.length).toEqual(1);
+    expect(results[0].category).toEqual(CATEGORIES[0]);
     done();
   });
 });

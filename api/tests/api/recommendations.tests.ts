@@ -10,14 +10,20 @@ describe("RECOMMENDATIONS API", () => {
     const RATING = 4.37;
     const PREFERRED_CATEGORIES = ["Shopping"];
 
-    const { body } = await request(app).post('/apps/discover').send({ age: AGE, rating: RATING, categories: PREFERRED_CATEGORIES });
+    // Run
+    const { body } = await request(app).post('/apps/discover').send({ 
+      age: AGE, 
+      rating: RATING, 
+      categories: PREFERRED_CATEGORIES 
+    });
     
-    // Assess
+    // Assert
     for (let app of body) {
       expect(app.min_age).toBeGreaterThanOrEqual(AGE);
       expect(app.rating).toBeGreaterThanOrEqual(RATING);
       expect(PREFERRED_CATEGORIES).toContain(app.category);
     }
+
     done();
   });
 });
