@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import AppsList from "./components/AppsList";
 import AppDetails from "./components/AppDetails";
-import { AppContext } from "../../AppContext";
+import { AppContext } from "../../logic/AppsContext";
 
 const AppsView = () => {
   const { apps } = useContext(AppContext);

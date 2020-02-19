@@ -1,5 +1,5 @@
 import React from "react";
-import { safeHtml } from "../../../helpers/SafeHtml";
+import { safeHtml } from "../../common/helpers/SafeHtml";
 
 const AppDetails = ({ app }) => {
   if (!app) {

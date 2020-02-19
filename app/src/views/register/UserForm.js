@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { calculateAge } from "../../helpers/DateUtils";
-import DatePicker from "../../components/DatePicker";
-import MultiCheck from "../../components/MultiCheck";
-import NumberRange from "../../components/NumberRange";
+import { calculateAge } from "../common/helpers/DateUtils";
+import DatePicker from "../common/components/DatePicker";
+import MultiCheck from "../common/components/MultiCheck";
+import NumberRange from "../common/components/NumberRange";
 
-const categories = require("../../resources/categories.json");
+const categories = require("../../logic/resources/categories.json");
 
 const UserForm = ({ onSubmit }) => {
-  const [birthdate, setBirthdate] = useState("20-04-1978");
+  const [birthdate, setBirthdate] = useState("");
   const [preferredCategories, setPreferredCategories] = useState([]);
   const [rating, setRating] = useState(1);
 
