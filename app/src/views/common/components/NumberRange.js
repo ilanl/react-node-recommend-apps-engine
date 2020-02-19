@@ -5,7 +5,7 @@ const NumberRange = ({ id, label, min, max, onChange, value }) => {
     <Fragment>
       <h4>{label}</h4>
       <div className="form-group">
-        <label htmlFor={id}>Enter the minimum rating</label>
+        <label htmlFor={id}>{label}</label>
         <input
           id={id}
           style={{ marginLeft: "10px" }}

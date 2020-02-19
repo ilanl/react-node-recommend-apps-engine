@@ -51,7 +51,7 @@ const UserForm = ({ onSubmit }) => {
           min={1}
           max={5}
           id="rating"
-          label="Minimum rating"
+          label="Enter the minimum rating"
         />
 
         <button type="submit" className="btn btn-primary">
