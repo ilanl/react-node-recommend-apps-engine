@@ -1,0 +1,55 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "preset": "ts-jest",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/tests/**/*.+(ts|tsx|js)"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/axios": "0.14.0",
+    "axios": "0.19.2",
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "1.17.1",
+    "@types/cors": "2.8.6",
+    "@types/express": "4.17.2",
+    "@types/jest": "25.1.2",
+    "@types/node": "13.7.0",
+    "@types/supertest": "2.0.8",
+    "jest": "25.1.0",
+    "jest-mock-extended": "1.0.8",
+    "nodemon": "2.0.2",
+    "supertest": "4.0.2",
+    "ts-jest": "25.2.0",
+    "ts-node": "8.6.2",
+    "typescript": "3.7.5"
+  }
+}

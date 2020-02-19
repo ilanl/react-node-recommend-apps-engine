@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules", "**/tests/**/*", "**/*.test.*"],
+  "include": ["**/src/*.ts", "src/recommendations/models/appinfo.ts", "src/recommendations/models.ts", "src/recommendations/service.ts", "src/app.ts"]
+}
