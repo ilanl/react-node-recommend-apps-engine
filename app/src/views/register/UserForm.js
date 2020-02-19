@@ -4,7 +4,7 @@ import DatePicker from "../common/components/DatePicker";
 import MultiCheck from "../common/components/MultiCheck";
 import NumberRange from "../common/components/NumberRange";
 
-const categories = require("../../logic/resources/categories.json");
+const categories = require("../../resources/categories.json");
 
 const UserForm = ({ onSubmit }) => {
   const [birthdate, setBirthdate] = useState("");
